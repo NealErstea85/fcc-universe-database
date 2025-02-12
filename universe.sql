@@ -288,8 +288,6 @@ INSERT INTO public.galaxy VALUES (6, NULL, NULL, 'milkyway', 100000);
 -- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.moon VALUES (1, 'moon1', true, 2, 'moon1');
-INSERT INTO public.moon VALUES (2, 'moon2', true, 3, 'moon2');
 INSERT INTO public.moon VALUES (3, 'moon3', true, 4, 'moon3');
 INSERT INTO public.moon VALUES (4, 'moon3', true, 4, 'moon4');
 INSERT INTO public.moon VALUES (5, 'moon3', true, 4, 'moon5');
@@ -308,6 +306,8 @@ INSERT INTO public.moon VALUES (17, 'moon3', true, 4, 'moon17');
 INSERT INTO public.moon VALUES (18, 'moon3', true, 4, 'moon18');
 INSERT INTO public.moon VALUES (19, 'moon3', true, 4, 'moon19');
 INSERT INTO public.moon VALUES (20, 'moon3', true, 4, 'moon20');
+INSERT INTO public.moon VALUES (22, 'moon21', true, 4, 'moon21');
+INSERT INTO public.moon VALUES (23, 'moon22', true, 5, 'moon22');
 
 
 --
@@ -315,8 +315,6 @@ INSERT INTO public.moon VALUES (20, 'moon3', true, 4, 'moon20');
 --
 
 INSERT INTO public.planet VALUES (1, 'mars', NULL, false, 1);
-INSERT INTO public.planet VALUES (2, 'earth', NULL, false, 1);
-INSERT INTO public.planet VALUES (3, 'earth', NULL, false, 1);
 INSERT INTO public.planet VALUES (4, 'jupiter', NULL, false, 1);
 INSERT INTO public.planet VALUES (5, 'uranus', NULL, false, 1);
 INSERT INTO public.planet VALUES (6, 'venus', NULL, false, 1);
@@ -327,6 +325,7 @@ INSERT INTO public.planet VALUES (10, 'nirvana', NULL, false, 1);
 INSERT INTO public.planet VALUES (11, 'potato', NULL, false, 2);
 INSERT INTO public.planet VALUES (12, 'puck', NULL, false, 2);
 INSERT INTO public.planet VALUES (13, 'tobleron', NULL, false, 3);
+INSERT INTO public.planet VALUES (14, 'atlanta', NULL, false, 1);
 
 
 --
@@ -359,14 +358,14 @@ SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 6, true);
 -- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.moon_moon_id_seq', 20, true);
+SELECT pg_catalog.setval('public.moon_moon_id_seq', 23, true);
 
 
 --
 -- Name: planet_planet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.planet_planet_id_seq', 13, true);
+SELECT pg_catalog.setval('public.planet_planet_id_seq', 14, true);
 
 
 --
@@ -417,11 +416,35 @@ ALTER TABLE ONLY public.moon
 
 
 --
+-- Name: galaxy name; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.galaxy
+    ADD CONSTRAINT name UNIQUE (name);
+
+
+--
 -- Name: galaxy name_unique; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.galaxy
     ADD CONSTRAINT name_unique UNIQUE (name);
+
+
+--
+-- Name: galaxy name_unique_galaxy; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.galaxy
+    ADD CONSTRAINT name_unique_galaxy UNIQUE (name);
+
+
+--
+-- Name: planet name_unique_planet; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.planet
+    ADD CONSTRAINT name_unique_planet UNIQUE (name);
 
 
 --
